@@ -1,18 +1,19 @@
 const admin = require("firebase-admin");
+require('dotenv').config()
 
-const serviceAccount = require("./firestore.json");
+const serviceAccount = require("../firestore.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://acesso-bd-35de4.firebaseio.com"
+  databaseURL: process.env.DATABASE_URL
 });
 
 const db = admin.firestore();
 
-const cat1 = 'blSU29H3r1y7wEDc0eGb';
+const cat1 = '0URz0xmY9Ip5rcsciURq';
 const catRef = db.collection('categories').doc(cat1);
 
-const doc = db.collection('products').doc('69FgiB20szh6CZL2Bjzo');
+const doc = db.collection('products').doc('N9zss70KYQn4tfyTMcW6');
 
 doc
   // O update atualiza apenas o campo informado, já a função set, realiza a 
